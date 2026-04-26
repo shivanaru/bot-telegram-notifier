@@ -29,19 +29,19 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore bot-telegram-notifier.sln
 
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build bot-telegram-notifier.sln --no-restore
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test bot-telegram-notifier.sln --no-build --verbosity normal
 
     - name: Install Playwright browsers
       run: pwsh bin/Debug/net10.0/playwright.ps1 install chromium
 
     - name: Run bot
-      run: dotnet run --configuration Release
+      run: dotnet run --project BotTelegramNotifier.csproj --configuration Release
       env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
