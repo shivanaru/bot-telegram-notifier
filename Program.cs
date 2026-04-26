@@ -15,7 +15,7 @@ class Program
             return;
         }
 
-        var message = "✅ GitHub Actions Job Bot is running!";
+        var message = "✅ GitHub Actions Bot is running!";
 
         using var client = new HttpClient();
 
